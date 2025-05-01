@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ishac Kurnia Sandy</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      section {
+        scroll-padding-top: 4rem;
+      }
+      .nav-link {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        color: #7e22ce;
+        transition: background-color .3s ease, color .3s ease;
+        border-radius: 0.375rem;
+      }
+      .nav-link:hover {
+        background-color: #f3e8ff;
+      }
+      .nav-link.active {
+        background-color: #7e22ce;
+        color: white !important;
+        border-radius: 0.375rem;
+        font-weight: 700;
+      }
+      .nav-link:active,
+      .nav-link:focus-visible {
+        background-color: #7e22ce;
+        color: white !important;
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-gray-800 overflow-x-hidden">
+    <!-- ✅ Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/100 backdrop-blur-md shadow-md">
+      <div class="w-full px-0">
+        <div class="flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+          <div class="text-purple-600 font-bold text-lg">Ishac Kurnia Sandy</div>
+          <div class="flex items-center gap-4">
+            <button id="burgerBtn" class="lg:hidden text-purple-600 focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div id="navLinks" class="hidden absolute top-full left-0 right-0 mt-2 w-full px-4 flex-col bg-white shadow-lg rounded-lg py-2 lg:static lg:flex lg:flex-row lg:w-auto lg:shadow-none lg:bg-transparent lg:mt-0 lg:py-0">
+              <a href="#home" class="nav-link">Home</a>
+              <a href="#achievement" class="nav-link">Achievement</a>
+              <a href="#about" class="nav-link">About me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ✅ Home Section -->
+    <section id="home" class="scroll-mt-16 relative bg-white px-6 py-12 sm:py-16 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:max-w-4xl">
+        <span class="text-[36px] sm:text-[48px] md:text-[58px] font-bold text-center block text-indigo-600">HI WELCOME!</span>
+        <figure class="mt-10">
+          <blockquote class="text-center text-xl font-semibold text-gray-900 sm:text-2xl">
+            <p>“Gajah gajah apa yang baik? Ga jahat - Ishac”</p>
+          </blockquote>
+          <figcaption class="mt-8">
+            <img class="mx-auto w-32 h-32 rounded-full" src="https://files.catbox.moe/8bbrg6.jpg" alt="">
+            <div class="mt-4 flex items-center justify-center space-x-3 text-base">
+              <div class="font-semibold text-gray-900">Ishac Kurnia Sandy</div>
+              <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
+                <circle cx="2" cy="2" r="1" />
+              </svg>
+              <div class="text-gray-600">Software Engineer</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+     <!-- ✅ Achievement Section -->
+    <section id="achievement" class="min-h-screen pb-32 bg-gray-100">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl py-8 sm:py-12 lg:max-w-none lg:py-16">
+          <h2 class="text-4xl font-bold tracking-tight text-gray-900">Achievement</h2>
+          <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <!-- Item 1 -->
+            <div class="group relative">
+              <img src="https://files.catbox.moe/mlygsi.png" class="w-full rounded-lg object-cover group-hover:opacity-75">
+              <h3 class="mt-4 text-sm text-gray-500">
+                <a href="https://github.com/Ikyodayo/OpenCV-Face-Detector" target="_blank">Modifier</a>
+              </h3>
+              <p class="text-base font-semibold text-gray-900">Face Detector</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="group relative">
+              <img src="https://files.catbox.moe/rxhz63.jpg" class="w-full rounded-lg object-cover group-hover:opacity-75">
+              <h3 class="mt-4 text-sm text-gray-500">
+                <a href="https://wa.me/6281234567890" target="_blank">Developer</a>
+              </h3>
+              <p class="text-base font-semibold text-gray-900">CAT AI</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="group relative">
+              <img src="https://files.catbox.moe/yb65ta.jpg" class="w-full rounded-lg object-cover group-hover:opacity-75">
+              <h3 class="mt-4 text-sm text-gray-500">
+                <a href="https://open.spotify.com/track/7KsqFRGwjbWAR350ZSkTeG?si=nYL6HX9PRYmCDmhEozCqsQ" target="_blank">Song Writer</a>
+              </h3>
+              <p class="text-base font-semibold text-gray-900">Sampai Jumpa Kawanku</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ✅ About Section & Chatbot -->
+    <section id="about" class="min-h-screen pb-32 bg-white">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 items-start gap-16 px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">About Me</h2>
+          <!-- Bio tetap sama -->
+        </div>
+        <div class="bg-white w-full h-[80vh] max-h-screen p-4 rounded-2xl shadow-lg flex flex-col">
+          <span class="font-medium text-gray-900">Merry AI</span>
+          <div class="flex-1 overflow-y-auto space-y-2 mb-4 max-h-[100vh]" id="chatBox"></div>
+          <form id="chatForm" class="flex gap-2">
+            <input type="text" id="messageInput" class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ketik Pesan" required />
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Kirim</button>
+            <button type="button" id="clearBtn" class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition">Clear</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Music -->
+    <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" autoplay loop muted playsinline></audio>
+    <div id="introBtnWrapper" class="fixed bottom-6 right-6 z-50 hidden sm:block">
+      <button id="introBtn" class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition">
+        🎤<span>Let's Play Music</span>
+      </button>
+    </div>
+    <div id="musicBtnWrapper" class="fixed bottom-80 right-6 z-50 transition-all duration-500 opacity-0 translate-x-20">
+      <button id="toggleMusic" class="w-12 h-12 rounded-full bg-purple-600 text-white shadow-lg flex items-center justify-center hover:bg-purple-700 transition">
+        <div class="relative w-5 h-5">
+          <svg id="iconPlay" class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M6 4l10 6-10 6V4z" />
+          </svg>
+          <svg id="iconPause" class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M6 4h4v12H6V4zm4 0h4v12h-4V4z" />
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <!-- ✅ Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        function activateNavLink() {
+          let current = "";
+          sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 120 && rect.bottom >= 120) current = section.id;
+          });
+          navLinks.forEach(link => {
+            link.classList.toggle("active", link.getAttribute("href").substring(1) === current);
+          });
+        }
+
+        window.addEventListener("scroll", activateNavLink);
+        activateNavLink();
+
+        navLinks.forEach(link => {
+          link.addEventListener("click", e => {
+            e.preventDefault();
+            const target = document.getElementById(link.getAttribute("href").substring(1));
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+              setTimeout(() => window.scrollBy(0, -64), 800);
+            }
+          });
+        });
+
+        document.getElementById("burgerBtn").addEventListener("click", () => {
+          document.getElementById("navLinks").classList.toggle("hidden");
+        });
+
+        document.querySelectorAll("#navLinks a").forEach(link => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth < 1024) document.getElementById("navLinks").classList.add("hidden");
+          });
+        });
+
+        const chatBox = document.getElementById("chatBox");
+        const chatForm = document.getElementById("chatForm");
+        const messageInput = document.getElementById("messageInput");
+        const clearBtn = document.getElementById("clearBtn");
+
+        clearBtn.addEventListener("click", () => chatBox.innerHTML = '');
+
+        chatForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const message = messageInput.value.trim();
+          if (!message) return;
+          addMessage('You', message, 'text-right text-blue-700');
+          messageInput.value = '';
+          try {
+            const res = await fetch('http://127.0.0.1:5000/chatbot', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ message })
+            });
+            const data = await res.json();
+            if (res.ok) addMessage(data.user, data.response, 'text-left text-gray-800');
+            else addMessage('Error', data.error || 'Something went wrong', 'text-left text-red-500');
+          } catch {
+            addMessage('Error', 'Network error', 'text-left text-red-500');
+          }
+        });
+
+        function addMessage(sender, text, className = '') {
+          const msg = document.createElement('div');
+          msg.className = `p-3 rounded-lg bg-gray-100 ${className}`;
+          msg.innerHTML = `<strong>${sender}:</strong> ${marked.parse(text)}`;
+          chatBox.appendChild(msg);
+          chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+        }
+
+        const bgMusic = document.getElementById("bgMusic");
+        const introBtn = document.getElementById("introBtn");
+        const musicBtnWrapper = document.getElementById("musicBtnWrapper");
+        const iconPlay = document.getElementById("iconPlay");
+        const iconPause = document.getElementById("iconPause");
+
+        introBtn.addEventListener("click", () => {
+          bgMusic.muted = false;
+          bgMusic.play();
+          introBtn.parentElement.classList.add("opacity-0", "pointer-events-none");
+          setTimeout(() => musicBtnWrapper.classList.remove("opacity-0", "translate-x-20"), 200);
+          iconPlay.classList.add("opacity-0");
+          iconPause.classList.remove("opacity-0");
+        });
+
+        document.getElementById("toggleMusic").addEventListener("click", () => {
+          if (bgMusic.paused) {
+            bgMusic.play();
+            iconPlay.classList.add("opacity-0");
+            iconPause.classList.remove("opacity-0");
+          } else {
+            bgMusic.pause();
+            iconPause.classList.add("opacity-0");
+            iconPlay.classList.remove("opacity-0");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
