@@ -53,8 +53,15 @@ button, input {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-
-
+.copy-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.copied-bubble {
+    background-color: #f3e8ff !important;
+    transition: background-color 0.3s ease;
+  }
     </style>
   </head>
 
@@ -86,7 +93,7 @@ button, input {
         <span class="text-[36px] sm:text-[48px] md:text-[58px] font-bold text-center block text-indigo-600">HI WELCOME!</span>
         <figure class="mt-10">
           <blockquote class="text-center text-xl font-semibold text-gray-900 sm:text-2xl">
-            <p>“Gajah gajah apa yang baik? Ga jahat - Ishac”</p>
+            <p>“ Lukas 1 : 38 ”</p>
           </blockquote>
           <figcaption class="mt-8">
             <img class="mx-auto w-32 h-32 rounded-full" src="https://files.catbox.moe/8bbrg6.jpg" alt="">
@@ -110,32 +117,40 @@ button, input {
           <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
             <!-- Item 1 -->
-            <div class="group relative">
-              <img src="https://files.catbox.moe/mlygsi.png" class="w-full rounded-lg object-cover group-hover:opacity-75">
-              <h3 class="mt-4 text-sm text-gray-500">
-                <a href="https://github.com/Ikyodayo/OpenCV-Face-Detector" target="_blank">Modifier</a>
-              </h3>
-              <p class="text-base font-semibold text-gray-900">Face Detector</p>
-            </div>
+           <a href="https://github.com/Ikyodayo/OpenCV-Face-Detector" target="_blank" class="group block">
+  <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out">
+    <img src="https://files.catbox.moe/mlygsi.png" class="w-full object-cover group-hover:opacity-75">
+    <div class="p-4 bg-white">
+      <h3 class="text-sm text-gray-500">Modifier</h3>
+      <p class="text-base font-semibold text-gray-900">Face Detector</p>
+    </div>
+  </div>
+</a>
+
+
             <!-- Item 2 -->
-            <div class="group relative">
-              <img src="https://files.catbox.moe/rxhz63.jpg" class="w-full rounded-lg object-cover group-hover:opacity-75">
-              <h3 class="mt-4 text-sm text-gray-500">
-                <a href="https://wa.me/6281234567890" target="_blank">Developer</a>
-              </h3>
-              <p class="text-base font-semibold text-gray-900">CAT AI</p>
-            </div>
+        <a href="https://wa.me/6281234567890" target="_blank" class="group block">
+  <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out">
+    <img src="https://files.catbox.moe/rxhz63.jpg" class="w-full object-cover group-hover:opacity-75">
+    <div class="p-4 bg-white">
+      <h3 class="text-sm text-gray-500">Developer</h3>
+      <p class="text-base font-semibold text-gray-900">CAT AI</p>
+    </div>
+  </div>
+</a>
+
+
             <!-- Item 3 -->
-            <div class="group relative">
-              <img src="https://files.catbox.moe/yb65ta.jpg" class="w-full rounded-lg object-cover group-hover:opacity-75">
-              <h3 class="mt-4 text-sm text-gray-500">
-                <a href="https://open.spotify.com/track/7KsqFRGwjbWAR350ZSkTeG?si=nYL6HX9PRYmCDmhEozCqsQ" target="_blank">Song Writer</a>
-              </h3>
-              <p class="text-base font-semibold text-gray-900">Sampai Jumpa Kawanku</p>
-            </div>
-          </div>
-        </div>
-      </div>
+           <a href="https://open.spotify.com/track/7KsqFRGwjbWAR350ZSkTeG?si=nYL6HX9PRYmCDmhEozCqsQ" target="_blank" class="group block">
+  <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out">
+    <img src="https://files.catbox.moe/yb65ta.jpg" class="w-full object-cover group-hover:opacity-75">
+    <div class="p-4 bg-white">
+      <h3 class="text-sm text-gray-500">Song Writer</h3>
+      <p class="text-base font-semibold text-gray-900">Sampai Jumpa Kawanku</p>
+    </div>
+  </div>
+</a>
+
     </section>
 
 
@@ -150,10 +165,10 @@ button, input {
 
         </div>
         <div class="bg-white w-full h-[80vh] max-h-screen p-4 rounded-2xl shadow-lg flex flex-col">
-          <span class="font-medium text-gray-900">Merry AI</span>
-          <div class="flex-1 overflow-y-auto space-y-2 mb-4 max-h-[100vh]" id="chatBox"></div>
+         <span class="font-bold text-gray-700">Merry</span>
+          <div class="flex-1 overflow-y-auto space-y-2 mb-4 max-h-[100vh] pt-4" id="chatBox"></div>
           <form id="chatForm" class="flex gap-2">
-  <input type="text" id="messageInput" class="flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base" placeholder="Ketik Pesan" required />
+  <input type="text" id="messageInput" class="flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base" placeholder="Ketik pesan untuk Merry" required />
   <button type="submit" class="bg-blue-500 text-white px-5 py-3 rounded-full hover:bg-blue-600 transition text-base">Kirim</button>
   <button type="button" id="clearBtn" class="bg-red-500 text-white px-5 py-3 rounded-full hover:bg-red-600 transition text-base">Clear</button>
 </form>
@@ -163,7 +178,7 @@ button, input {
     </section>
 
     <!-- ✅ Music -->
-    <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" autoplay loop muted playsinline></audio>
+   <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" loop playsinline></audio>
     <div id="introBtnWrapper" class="fixed bottom-6 right-6 z-50 hidden sm:block">
       <button id="introBtn" class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition">
         🎤<span>Let's Play Music</span>
@@ -183,117 +198,198 @@ button, input {
     </div>
 
     <!-- ✅ Scripts -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
+   <script>
+  // Fungsi global untuk tombol "Salin"
+  function copyToClipboard(button) {
+    const messageDiv = button.parentElement.querySelector('div.mt-1');
+    if (!messageDiv) return alert("Tidak dapat menemukan pesan.");
+    const textToCopy = messageDiv.innerText.trim();
 
-        function activateNavLink() {
-          let current = "";
-          sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= 120 && rect.bottom >= 120) current = section.id;
-          });
-          navLinks.forEach(link => {
-            link.classList.toggle("active", link.getAttribute("href").substring(1) === current);
-          });
-        }
-
-        window.addEventListener("scroll", activateNavLink);
-        activateNavLink();
-
-        navLinks.forEach(link => {
-          link.addEventListener("click", e => {
-            e.preventDefault();
-            const target = document.getElementById(link.getAttribute("href").substring(1));
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
-              setTimeout(() => window.scrollBy(0, -64), 800);
-            }
-          });
-        });
-
-        document.getElementById("burgerBtn").addEventListener("click", () => {
-          document.getElementById("navLinks").classList.toggle("hidden");
-        });
-
-       document.querySelectorAll("#navLinks a").forEach(link => {
-  link.addEventListener("click", () => {
-    if (window.innerWidth < 1024)
-      document.getElementById("navLinks").classList.add("hidden");
-  });
-});
-document.addEventListener("click", (e) => {
-  const nav = document.getElementById("navLinks");
-  const burger = document.getElementById("burgerBtn");
-  if (window.innerWidth < 1024 && !nav.contains(e.target) && !burger.contains(e.target)) {
-    nav.classList.add("hidden");
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        button.innerText = "Disalin!";
+        setTimeout(() => button.innerText = "Salin", 1500);
+      })
+      .catch(() => alert("Gagal menyalin teks"));
   }
-});
 
+  // Semua kode utama dijalankan setelah DOM selesai dimuat
+  document.addEventListener("DOMContentLoaded", () => {
+    // Navigasi aktif saat scroll
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-        const chatBox = document.getElementById("chatBox");
-        const chatForm = document.getElementById("chatForm");
-        const messageInput = document.getElementById("messageInput");
-        const clearBtn = document.getElementById("clearBtn");
-
-        clearBtn.addEventListener("click", () => chatBox.innerHTML = '');
-
-        chatForm.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const message = messageInput.value.trim();
-          if (!message) return;
-          addMessage('You', message, 'text-right text-blue-700');
-          messageInput.value = '';
-          try {
-            const res = await fetch('http://127.0.0.1:5000/chatbot', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ message })
-            });
-            const data = await res.json();
-            if (res.ok) addMessage(data.user, data.response, 'text-left text-gray-800');
-            else addMessage('Error', data.error || 'Something went wrong', 'text-left text-red-500');
-          } catch {
-            addMessage('Error', 'Network error', 'text-left text-red-500');
-          }
-        });
-
-        function addMessage(sender, text, className = '') {
-          const msg = document.createElement('div');
-          msg.className = `p-3 rounded-lg bg-gray-100 ${className}`;
-          msg.innerHTML = `<strong>${sender}:</strong> ${marked.parse(text)}`;
-          chatBox.appendChild(msg);
-          chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
-        }
-
-        const bgMusic = document.getElementById("bgMusic");
-        const introBtn = document.getElementById("introBtn");
-        const musicBtnWrapper = document.getElementById("musicBtnWrapper");
-        const iconPlay = document.getElementById("iconPlay");
-        const iconPause = document.getElementById("iconPause");
-
-        introBtn.addEventListener("click", () => {
-          bgMusic.muted = false;
-           bgMusic.play().catch(() => alert("Tap layar untuk mulai musik di perangkat Anda."));
-          introBtn.parentElement.classList.add("opacity-0", "pointer-events-none");
-          setTimeout(() => musicBtnWrapper.classList.remove("opacity-0", "translate-x-20"), 200);
-          iconPlay.classList.add("opacity-0");
-          iconPause.classList.remove("opacity-0");
-        });
-
-        document.getElementById("toggleMusic").addEventListener("click", () => {
-          if (bgMusic.paused) {
-            bgMusic.play();
-            iconPlay.classList.add("opacity-0");
-            iconPause.classList.remove("opacity-0");
-          } else {
-            bgMusic.pause();
-            iconPause.classList.add("opacity-0");
-            iconPlay.classList.remove("opacity-0");
-          }
-        });
+    function activateNavLink() {
+      let current = "";
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) current = section.id;
       });
-    </script>
+      navLinks.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href").substring(1) === current);
+      });
+    }
+
+    window.addEventListener("scroll", activateNavLink);
+    activateNavLink();
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const target = document.getElementById(link.getAttribute("href").substring(1));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          setTimeout(() => window.scrollBy(0, -64), 800);
+        }
+      });
+    });
+
+    // Navbar responsive
+    const burger = document.getElementById("burgerBtn");
+    const nav = document.getElementById("navLinks");
+
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("hidden");
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 1024) nav.classList.add("hidden");
+      });
+    });
+
+    document.addEventListener("click", e => {
+      if (window.innerWidth < 1024 && !nav.contains(e.target) && !burger.contains(e.target)) {
+        nav.classList.add("hidden");
+      }
+    });
+
+    // Chatbot
+    const chatBox = document.getElementById("chatBox");
+    const chatForm = document.getElementById("chatForm");
+    const messageInput = document.getElementById("messageInput");
+    const clearBtn = document.getElementById("clearBtn");
+
+    clearBtn.addEventListener("click", () => chatBox.innerHTML = '');
+
+    function addLoading() {
+      removeLoading();
+      const loading = document.createElement('div');
+      loading.id = 'loadingMessage';
+      loading.className = 'p-3 rounded-lg bg-white text-left text-gray-500 border border-gray-200 shadow';
+      loading.innerHTML = `<strong class="text-purple-600">Merry:</strong> sedang mengetik...`;
+      chatBox.appendChild(loading);
+      chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    }
+
+    function removeLoading() {
+      const existing = document.getElementById('loadingMessage');
+      if (existing) existing.remove();
+    }
+
+    chatForm.addEventListener("submit", async e => {
+      e.preventDefault();
+      const message = messageInput.value.trim();
+      if (!message) return;
+
+      addMessage('You', message, 'text-right text-blue-700');
+      messageInput.value = '';
+      addLoading();
+
+      try {
+        const res = await fetch(`https://zenz.biz.id/ai/blackbox?query=${encodeURIComponent(message)}`);
+        const data = await res.json();
+
+        removeLoading();
+
+        if (res.ok && data.status) {
+          addMessage('Merry', data.result.response, 'text-left text-gray-800');
+        } else {
+          addMessage("Error", data.error || "Something went wrong", 'text-left text-red-500');
+        }
+      } catch (err) {
+        console.error(err);
+        removeLoading();
+        addMessage('Error', 'Network error', 'text-left text-red-500');
+      }
+    });
+
+  function addMessage(sender, text, className = '') {
+  const msg = document.createElement('div');
+  msg.className = `relative p-3 rounded-lg bg-white border border-gray-200 shadow ${className} group`;
+
+  if (sender === 'Merry') {
+    msg.innerHTML = `
+      <strong class="text-purple-600">${sender}:</strong>
+      <div class="mt-1">${marked.parse(text)}</div>
+      <button class="copy-btn absolute bottom-2 right-4 text-purple-600 font-bold text-sm bg-transparent" onclick="event.stopPropagation(); copyToClipboard(this)">Salin</button>
+    `;
+
+    // 💡 Tambahkan tap ke bubble
+    msg.addEventListener("click", () => {
+      const contentDiv = msg.querySelector("div.mt-1");
+      const button = msg.querySelector(".copy-btn");
+      if (!contentDiv) return;
+
+      const textToCopy = contentDiv.innerText.trim();
+
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          // Tambah efek ungu
+          msg.classList.add("copied-bubble");
+          if (button) {
+            button.innerText = "Disalin!";
+          }
+
+          // Reset setelah 1 detik
+          setTimeout(() => {
+            msg.classList.remove("copied-bubble");
+            if (button) {
+              button.innerText = "Salin";
+            }
+          }, 1000);
+        })
+        .catch(() => alert("Gagal menyalin teks"));
+    });
+  } else {
+    msg.innerHTML = `<strong class="text-blue-600">${sender}:</strong> <div class="mt-1">${marked.parse(text)}</div>`;
+  }
+
+  chatBox.appendChild(msg);
+  chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+}
+
+
+    // Musik
+    const bgMusic = document.getElementById("bgMusic");
+    const introBtn = document.getElementById("introBtn");
+    const musicBtnWrapper = document.getElementById("musicBtnWrapper");
+    const iconPlay = document.getElementById("iconPlay");
+    const iconPause = document.getElementById("iconPause");
+
+    introBtn.addEventListener("click", () => {
+      bgMusic.muted = false;
+      bgMusic.play().catch(() => alert("Tap layar untuk mulai musik di perangkat Anda."));
+      introBtn.parentElement.classList.add("opacity-0", "pointer-events-none");
+      setTimeout(() => musicBtnWrapper.classList.remove("opacity-0", "translate-x-20"), 200);
+      iconPlay.classList.add("opacity-0");
+      iconPause.classList.remove("opacity-0");
+    });
+
+    document.getElementById("toggleMusic").addEventListener("click", () => {
+      bgMusic.muted = false;
+      if (bgMusic.paused) {
+        bgMusic.play();
+        iconPlay.classList.add("opacity-0");
+        iconPause.classList.remove("opacity-0");
+      } else {
+        bgMusic.pause();
+        iconPause.classList.add("opacity-0");
+        iconPlay.classList.remove("opacity-0");
+      }
+    });
+  });
+</script>
+
   </body>
 </html>
