@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Ishac Kurnia Sandy</title>
 
     <!-- Google Fonts: Poppins -->
@@ -45,58 +44,66 @@
         outline: none;
       }
       #chatBox img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-}
-button, input {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-.copy-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-.copied-bubble {
-    background-color: #f3e8ff !important;
-    transition: background-color 0.3s ease;
-  }
-
-  .user-bubble {
-  background-color: #e0f2fe; /* biru muda */
-  align-self: flex-end;
-  text-align: right;
-}
-.bot-bubble {
-  background-color: #f3e8ff; /* ungu muda */
-  align-self: flex-start;
-}
-
-#chatBox::-webkit-scrollbar {
-  width: 6px;
-}
-#chatBox::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
-  border-radius: 8px;
-}
-
-.nav-link {
-  transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.4s ease;
-}
-
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+      }
+      button, input {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .copy-btn {
+        min-width: 60px;
+        text-align: right;
+        white-space: nowrap;
+        top: 0.25rem;
+        right: 0.25rem;
+        position: absolute;
+        font-size: 0.75rem;
+        color: #7e22ce;
+        font-weight: 600;
+        background-color: transparent;
+      }
+      .user-bubble {
+        background-color: #e0f2fe;
+        align-self: flex-end;
+        text-align: right;
+      }
+      .bot-bubble {
+        background-color: #f3e8ff;
+        align-self: flex-start;
+      }
+      #chatBox::-webkit-scrollbar {
+        width: 6px;
+      }
+      #chatBox::-webkit-scrollbar-thumb {
+        background-color: #d1d5db;
+        border-radius: 8px;
+      }
+      .nav-link {
+        transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.4s ease;
+      }
     </style>
-  </head>
+    <!-- ✅ MathJax untuk render rumus matematika -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
+  </head>
   <body class="bg-white text-gray-800 overflow-x-hidden">
     <!-- ✅ Navbar -->
     <nav class="sticky top-0 z-50 bg-white/100 backdrop-blur-md shadow-md">
@@ -210,7 +217,7 @@ button, input {
     </section>
 
     <!-- ✅ Music -->
-   <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" loop playsinline></audio>
+   <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" preload="auto" loop></audio>
 <div id="introBtnWrapper" class="fixed bottom-6 right-6 z-50 block sm:bottom-6 sm:right-6">
      <button id="introBtn" class="flex items-center gap-2 px-4 py-2 text-sm sm:text-base bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition">
         🎤<span>Let's Play Music</span>
@@ -218,7 +225,6 @@ button, input {
     </div>
     <div id="musicBtnWrapper" class="fixed bottom-28 right-4 z-50 transition-all duration-500 opacity-0 translate-x-20 sm:bottom-80 sm:right-6">
       <button id="toggleMusic" class="w-12 h-12 rounded-full bg-purple-600 text-white shadow-lg flex items-center justify-center hover:bg-purple-700 transition">
-       <span id="musicStatus" class="absolute top-full mt-1 text-xs text-center text-purple-600 w-full">Paused</span>
         <div class="relative w-5 h-5">
           <svg id="iconPlay" class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100" fill="currentColor" viewBox="0 0 20 20">
             <path d="M6 4l10 6-10 6V4z" />
@@ -233,18 +239,14 @@ button, input {
     <!-- ✅ Scripts -->
    <script>
   // Fungsi global untuk tombol "Salin"
-  function copyToClipboard(button) {
-    const messageDiv = button.parentElement.querySelector('div.mt-1');
-    if (!messageDiv) return alert("Tidak dapat menemukan pesan.");
-    const textToCopy = messageDiv.innerText.trim();
+ function copyToClipboard(button) {
+  const messageDiv = button.parentElement.querySelector('div.mt-1');
+  if (!messageDiv) return alert("Tidak dapat menemukan pesan.");
+  const textToCopy = messageDiv.innerText.trim();
 
-    navigator.clipboard.writeText(textToCopy)
-      .then(() => {
-        button.innerText = "Disalin!";
-        setTimeout(() => button.innerText = "Salin", 1500);
-      })
-      .catch(() => alert("Gagal menyalin teks"));
-  }
+  navigator.clipboard.writeText(textToCopy).catch(() => alert("Gagal menyalin teks"));
+}
+
 
   // Semua kode utama dijalankan setelah DOM selesai dimuat
   document.addEventListener("DOMContentLoaded", () => {
@@ -363,36 +365,49 @@ button, input {
   const msg = document.createElement('div');
 
   let bubbleClass = sender === 'Merry' ? 'bot-bubble' : 'user-bubble';
-  msg.className = `relative p-3 rounded-lg bg-white border border-gray-200 shadow ${className} group animate-fade-in`;
+  msg.className = `relative p-3 rounded-lg border border-gray-200 shadow ${bubbleClass} ${className} group animate-fade-in`;
 
 
   if (sender === 'Merry') {
     msg.innerHTML = `
       <strong class="text-purple-600">${sender}:</strong>
       <div class="mt-1">${marked.parse(text)}</div>
-      <button class="copy-btn absolute bottom-2 right-4 text-purple-600 font-bold text-sm" onclick="event.stopPropagation(); copyToClipboard(this)">Salin</button>
+    <button class="copy-btn absolute top-2 right-4 text-purple-600 font-semibold text-sm whitespace-nowrap min-w-[60px]" onclick="event.stopPropagation(); copyToClipboard(this)">Salin</button>
+
+
     `;
 
-    msg.addEventListener("click", () => {
-      const contentDiv = msg.querySelector("div.mt-1");
-      const button = msg.querySelector(".copy-btn");
-      if (!contentDiv) return;
-      const textToCopy = contentDiv.innerText.trim();
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        msg.classList.add("copied-bubble");
-        if (button) button.innerText = "Disalin!";
-        setTimeout(() => {
-          msg.classList.remove("copied-bubble");
-          if (button) button.innerText = "Salin";
-        }, 1000);
-      }).catch(() => alert("Gagal menyalin teks"));
-    });
+   msg.addEventListener("click", () => {
+  const contentDiv = msg.querySelector("div.mt-1");
+  const button = msg.querySelector(".copy-btn");
+  if (!contentDiv) return;
+  const textToCopy = contentDiv.innerText.trim();
+
+  // Tambahkan efek warna ungu ke bubble selama 1 detik
+  msg.classList.add("bg-purple-200");
+  setTimeout(() => {
+    msg.classList.remove("bg-purple-200");
+  }, 1000);
+
+  // Salin teks ke clipboard
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    if (button) button.innerText = "Disalin!";
+    setTimeout(() => {
+      if (button) button.innerText = "Salin";
+    }, 1000);
+  }).catch(() => alert("Gagal menyalin teks"));
+});
+
   } else {
     msg.innerHTML = `<strong class="text-blue-600">${sender}:</strong> <div class="mt-1">${marked.parse(text)}</div>`;
   }
 
   chatBox.appendChild(msg);
   chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+  if (window.MathJax && MathJax.typesetPromise) {
+  MathJax.typesetPromise([msg]);
+}
+
 }
 
 
@@ -404,20 +419,26 @@ button, input {
     const iconPlay = document.getElementById("iconPlay");
     const iconPause = document.getElementById("iconPause");
 
-    introBtn.addEventListener("click", () => {
-  bgMusic.muted = false;
-  bgMusic.play().catch(() => alert("Tap layar untuk mulai musik di perangkat Anda."));
-  introBtn.parentElement.classList.remove("opacity-0", "pointer-events-none");
-  setTimeout(() => musicBtnWrapper.classList.remove("opacity-0", "translate-x-20"), 200);
-  iconPlay.classList.add("opacity-0");
-  iconPause.classList.remove("opacity-0");
+    introBtn.addEventListener("click", async () => {
+  try {
+    await bgMusic.play(); // Memastikan audio dimulai
+    iconPlay.classList.add("opacity-0");
+    iconPause.classList.remove("opacity-0");
 
-  const musicStatus = document.getElementById("musicStatus");
-  if (musicStatus) musicStatus.innerText = "Playing";
+    // Tampilkan tombol pause
+    musicBtnWrapper.classList.remove("opacity-0", "translate-x-20");
+
+    // Sembunyikan tombol intro
+    introBtn.parentElement.classList.add("hidden");
+  } catch (err) {
+    alert("Klik/tap dibutuhkan untuk memulai musik.");
+    console.error("Gagal memutar musik:", err);
+  }
 });
 
 
-    ddocument.getElementById("toggleMusic").addEventListener("click", () => {
+
+    document.getElementById("toggleMusic").addEventListener("click", () => {
   bgMusic.muted = false;
   const status = document.getElementById("musicStatus");
 
@@ -425,19 +446,14 @@ button, input {
     bgMusic.play();
     iconPlay.classList.add("opacity-0");
     iconPause.classList.remove("opacity-0");
-    status.innerText = "Playing";
+    
   } else {
     bgMusic.pause();
     iconPause.classList.add("opacity-0");
     iconPlay.classList.remove("opacity-0");
-    status.innerText = "Paused";
+    
   }
-if (chatBox.children.length === 0) {
-  const placeholder = document.createElement("div");
-  placeholder.className = "text-sm text-gray-500 italic";
-  placeholder.innerText = "Belum ada percakapan. Ayo mulai!";
-  chatBox.appendChild(placeholder);
-}
+
 
   setTimeout(() => {
   chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
