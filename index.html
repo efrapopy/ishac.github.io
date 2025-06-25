@@ -62,6 +62,38 @@ button, input {
     background-color: #f3e8ff !important;
     transition: background-color 0.3s ease;
   }
+
+  .user-bubble {
+  background-color: #e0f2fe; /* biru muda */
+  align-self: flex-end;
+  text-align: right;
+}
+.bot-bubble {
+  background-color: #f3e8ff; /* ungu muda */
+  align-self: flex-start;
+}
+
+#chatBox::-webkit-scrollbar {
+  width: 6px;
+}
+#chatBox::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 8px;
+}
+
+.nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
     </style>
   </head>
 
@@ -96,7 +128,7 @@ button, input {
             <p>“ Lukas 1 : 38 ”</p>
           </blockquote>
           <figcaption class="mt-8">
-            <img class="mx-auto w-32 h-32 rounded-full" src="https://files.catbox.moe/8bbrg6.jpg" alt="">
+          <img class="mx-auto w-32 h-32 rounded-full" src="https://files.catbox.moe/8bbrg6.jpg" alt="Ishac Kurnia Sandy" loading="lazy">
             <div class="mt-4 flex items-center justify-center space-x-3 text-base">
               <div class="font-semibold text-gray-900">Ishac Kurnia Sandy</div>
               <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
@@ -119,7 +151,7 @@ button, input {
             <!-- Item 1 -->
            <a href="https://github.com/Ikyodayo/OpenCV-Face-Detector" target="_blank" class="group block">
   <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out">
-    <img src="https://files.catbox.moe/mlygsi.png" class="w-full object-cover group-hover:opacity-75">
+<img src="https://files.catbox.moe/mlygsi.png"alt="Peoject Face Detector menggunakan OpenCV" class="w-full object-cover group-hover:opacity-75" loading="lazy">
     <div class="p-4 bg-white">
       <h3 class="text-sm text-gray-500">Modifier</h3>
       <p class="text-base font-semibold text-gray-900">Face Detector</p>
@@ -131,7 +163,7 @@ button, input {
             <!-- Item 2 -->
         <a href="https://wa.me/6281234567890" target="_blank" class="group block">
   <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out">
-    <img src="https://files.catbox.moe/rxhz63.jpg" class="w-full object-cover group-hover:opacity-75">
+    <img src="https://files.catbox.moe/rxhz63.jpg" alt="aplikasi chatbot CAT AI" class="w-full object-cover group-hover:opacity-75" loading="lazy">
     <div class="p-4 bg-white">
       <h3 class="text-sm text-gray-500">Developer</h3>
       <p class="text-base font-semibold text-gray-900">CAT AI</p>
@@ -143,7 +175,7 @@ button, input {
             <!-- Item 3 -->
            <a href="https://open.spotify.com/track/7KsqFRGwjbWAR350ZSkTeG?si=nYL6HX9PRYmCDmhEozCqsQ" target="_blank" class="group block">
   <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out">
-    <img src="https://files.catbox.moe/yb65ta.jpg" class="w-full object-cover group-hover:opacity-75">
+    <img src="https://files.catbox.moe/yb65ta.jpg" alt="Cover lagu Sampai Jumpa Kawanku"  class="w-full object-cover group-hover:opacity-75" loading="lazy">
     <div class="p-4 bg-white">
       <h3 class="text-sm text-gray-500">Song Writer</h3>
       <p class="text-base font-semibold text-gray-900">Sampai Jumpa Kawanku</p>
@@ -164,11 +196,11 @@ button, input {
 </p>
 
         </div>
-        <div class="bg-white w-full h-[80vh] max-h-screen p-4 rounded-2xl shadow-lg flex flex-col">
+   <div class="bg-white w-full h-[80vh] max-h-screen p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg flex flex-col">
          <span class="font-bold text-gray-700">Merry</span>
-          <div class="flex-1 overflow-y-auto space-y-2 mb-4 max-h-[100vh] pt-4" id="chatBox"></div>
-          <form id="chatForm" class="flex gap-2">
-  <input type="text" id="messageInput" class="flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base" placeholder="Ketik pesan untuk Merry" required />
+       <div class="flex-1 overflow-y-auto space-y-2 mb-4 max-h-full pt-4 pr-2" id="chatBox"></div>
+     <form id="chatForm" class="flex flex-col sm:flex-row gap-2">
+ <input type="text" id="messageInput" class="w-full sm:flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base" placeholder="Tulis sesuatu..." required autofocus />
   <button type="submit" class="bg-blue-500 text-white px-5 py-3 rounded-full hover:bg-blue-600 transition text-base">Kirim</button>
   <button type="button" id="clearBtn" class="bg-red-500 text-white px-5 py-3 rounded-full hover:bg-red-600 transition text-base">Clear</button>
 </form>
@@ -179,13 +211,14 @@ button, input {
 
     <!-- ✅ Music -->
    <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" loop playsinline></audio>
-    <div id="introBtnWrapper" class="fixed bottom-6 right-6 z-50 hidden sm:block">
-      <button id="introBtn" class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition">
+<div id="introBtnWrapper" class="fixed bottom-6 right-6 z-50 block sm:bottom-6 sm:right-6">
+     <button id="introBtn" class="flex items-center gap-2 px-4 py-2 text-sm sm:text-base bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition">
         🎤<span>Let's Play Music</span>
       </button>
     </div>
-    <div id="musicBtnWrapper" class="fixed bottom-80 right-6 z-50 transition-all duration-500 opacity-0 translate-x-20">
+    <div id="musicBtnWrapper" class="fixed bottom-28 right-4 z-50 transition-all duration-500 opacity-0 translate-x-20 sm:bottom-80 sm:right-6">
       <button id="toggleMusic" class="w-12 h-12 rounded-full bg-purple-600 text-white shadow-lg flex items-center justify-center hover:bg-purple-700 transition">
+       <span id="musicStatus" class="absolute top-full mt-1 text-xs text-center text-purple-600 w-full">Paused</span>
         <div class="relative w-5 h-5">
           <svg id="iconPlay" class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100" fill="currentColor" viewBox="0 0 20 20">
             <path d="M6 4l10 6-10 6V4z" />
@@ -233,16 +266,21 @@ button, input {
     window.addEventListener("scroll", activateNavLink);
     activateNavLink();
 
-    navLinks.forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const target = document.getElementById(link.getAttribute("href").substring(1));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-          setTimeout(() => window.scrollBy(0, -64), 800);
-        }
-      });
-    });
+  navLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const target = document.getElementById(link.getAttribute("href").substring(1));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => window.scrollBy(0, -64), 800);
+
+      // 🔥 Set link aktif saat klik
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    }
+  });
+});
+
 
     // Navbar responsive
     const burger = document.getElementById("burgerBtn");
@@ -295,61 +333,59 @@ button, input {
       addMessage('You', message, 'text-right text-blue-700');
       messageInput.value = '';
       addLoading();
+      let timeoutFallback = setTimeout(() => {
+  removeLoading();
+  addMessage('Merry', 'Ini agak lama ya... mungkin koneksi sedang lambat.', 'text-left text-yellow-600');
+}, 7000); 
 
       try {
         const res = await fetch(`https://zenz.biz.id/ai/blackbox?query=${encodeURIComponent(message)}`);
         const data = await res.json();
 
         removeLoading();
+        clearTimeout(timeoutFallback);
+       if (res.ok && data.status && data.result && data.result.response) {
+  addMessage('Merry', data.result.response, 'text-left text-gray-800');
+} else {
+  const msg = data?.error || "Maaf, Merry sedang kesulitan merespons. Coba lagi nanti ya 😊";
+  addMessage("Merry", msg, 'text-left text-red-500');
+}
+} catch (err) {
+  console.error("Terjadi kesalahan jaringan:", err);
+  removeLoading();
+   clearTimeout(timeoutFallback);
+  addMessage('Merry', 'Tidak bisa terhubung ke server. Coba cek koneksi internet kamu.', 'text-left text-red-500');
+}
 
-        if (res.ok && data.status) {
-          addMessage('Merry', data.result.response, 'text-left text-gray-800');
-        } else {
-          addMessage("Error", data.error || "Something went wrong", 'text-left text-red-500');
-        }
-      } catch (err) {
-        console.error(err);
-        removeLoading();
-        addMessage('Error', 'Network error', 'text-left text-red-500');
-      }
     });
 
-  function addMessage(sender, text, className = '') {
+ function addMessage(sender, text, className = '') {
   const msg = document.createElement('div');
-  msg.className = `relative p-3 rounded-lg bg-white border border-gray-200 shadow ${className} group`;
+
+  let bubbleClass = sender === 'Merry' ? 'bot-bubble' : 'user-bubble';
+  msg.className = `relative p-3 rounded-lg bg-white border border-gray-200 shadow ${className} group animate-fade-in`;
+
 
   if (sender === 'Merry') {
     msg.innerHTML = `
       <strong class="text-purple-600">${sender}:</strong>
       <div class="mt-1">${marked.parse(text)}</div>
-      <button class="copy-btn absolute bottom-2 right-4 text-purple-600 font-bold text-sm bg-transparent" onclick="event.stopPropagation(); copyToClipboard(this)">Salin</button>
+      <button class="copy-btn absolute bottom-2 right-4 text-purple-600 font-bold text-sm" onclick="event.stopPropagation(); copyToClipboard(this)">Salin</button>
     `;
 
-    // 💡 Tambahkan tap ke bubble
     msg.addEventListener("click", () => {
       const contentDiv = msg.querySelector("div.mt-1");
       const button = msg.querySelector(".copy-btn");
       if (!contentDiv) return;
-
       const textToCopy = contentDiv.innerText.trim();
-
-      navigator.clipboard.writeText(textToCopy)
-        .then(() => {
-          // Tambah efek ungu
-          msg.classList.add("copied-bubble");
-          if (button) {
-            button.innerText = "Disalin!";
-          }
-
-          // Reset setelah 1 detik
-          setTimeout(() => {
-            msg.classList.remove("copied-bubble");
-            if (button) {
-              button.innerText = "Salin";
-            }
-          }, 1000);
-        })
-        .catch(() => alert("Gagal menyalin teks"));
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        msg.classList.add("copied-bubble");
+        if (button) button.innerText = "Disalin!";
+        setTimeout(() => {
+          msg.classList.remove("copied-bubble");
+          if (button) button.innerText = "Salin";
+        }, 1000);
+      }).catch(() => alert("Gagal menyalin teks"));
     });
   } else {
     msg.innerHTML = `<strong class="text-blue-600">${sender}:</strong> <div class="mt-1">${marked.parse(text)}</div>`;
@@ -360,6 +396,7 @@ button, input {
 }
 
 
+
     // Musik
     const bgMusic = document.getElementById("bgMusic");
     const introBtn = document.getElementById("introBtn");
@@ -368,26 +405,45 @@ button, input {
     const iconPause = document.getElementById("iconPause");
 
     introBtn.addEventListener("click", () => {
-      bgMusic.muted = false;
-      bgMusic.play().catch(() => alert("Tap layar untuk mulai musik di perangkat Anda."));
-      introBtn.parentElement.classList.add("opacity-0", "pointer-events-none");
-      setTimeout(() => musicBtnWrapper.classList.remove("opacity-0", "translate-x-20"), 200);
-      iconPlay.classList.add("opacity-0");
-      iconPause.classList.remove("opacity-0");
-    });
+  bgMusic.muted = false;
+  bgMusic.play().catch(() => alert("Tap layar untuk mulai musik di perangkat Anda."));
+  introBtn.parentElement.classList.remove("opacity-0", "pointer-events-none");
+  setTimeout(() => musicBtnWrapper.classList.remove("opacity-0", "translate-x-20"), 200);
+  iconPlay.classList.add("opacity-0");
+  iconPause.classList.remove("opacity-0");
 
-    document.getElementById("toggleMusic").addEventListener("click", () => {
-      bgMusic.muted = false;
-      if (bgMusic.paused) {
-        bgMusic.play();
-        iconPlay.classList.add("opacity-0");
-        iconPause.classList.remove("opacity-0");
-      } else {
-        bgMusic.pause();
-        iconPause.classList.add("opacity-0");
-        iconPlay.classList.remove("opacity-0");
-      }
-    });
+  const musicStatus = document.getElementById("musicStatus");
+  if (musicStatus) musicStatus.innerText = "Playing";
+});
+
+
+    ddocument.getElementById("toggleMusic").addEventListener("click", () => {
+  bgMusic.muted = false;
+  const status = document.getElementById("musicStatus");
+
+  if (bgMusic.paused) {
+    bgMusic.play();
+    iconPlay.classList.add("opacity-0");
+    iconPause.classList.remove("opacity-0");
+    status.innerText = "Playing";
+  } else {
+    bgMusic.pause();
+    iconPause.classList.add("opacity-0");
+    iconPlay.classList.remove("opacity-0");
+    status.innerText = "Paused";
+  }
+if (chatBox.children.length === 0) {
+  const placeholder = document.createElement("div");
+  placeholder.className = "text-sm text-gray-500 italic";
+  placeholder.innerText = "Belum ada percakapan. Ayo mulai!";
+  chatBox.appendChild(placeholder);
+}
+
+  setTimeout(() => {
+  chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+}, 300);
+
+});
   });
 </script>
 
