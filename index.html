@@ -13,6 +13,9 @@
     <!-- Marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
     <style>
       body {
         font-family: 'Poppins', sans-serif;
@@ -64,22 +67,9 @@
         font-weight: 600;
         background-color: transparent;
       }
-      .user-bubble {
-        background-color: #e0f2fe;
-        align-self: flex-end;
-        text-align: right;
-      }
-      .bot-bubble {
-        background-color: #f3e8ff;
-        align-self: flex-start;
-      }
-      #chatBox::-webkit-scrollbar {
-        width: 6px;
-      }
-      #chatBox::-webkit-scrollbar-thumb {
-        background-color: #d1d5db;
-        border-radius: 8px;
-      }
+  
+
+  
       .nav-link {
         transition: background-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
       }
@@ -90,6 +80,71 @@
       .animate-fade-in {
         animation: fadeIn 1.2s ease;
       }
+
+      .section-spacing {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-spacing {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-spacing {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+ .user-bubble, .bot-bubble {
+  max-width: 75%;
+  min-width: 80px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  display: inline-block;
+}
+.bot-bubble {
+ background-color: #d8b4fe  !important; 
+  color: #000 ! important ;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  max-width: 75%;
+  word-break: break-word;
+  position: relative;
+  transition: background-color 0.3s ease;
+   cursor: pointer;
+}
+
+.user-bubble {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  max-width: 75%;
+  word-break: break-word;
+  position: relative;
+}
+
+#chatHeader {
+  background-color: white;
+}
+
+.typing-bubble {
+  background-color: #e9d5ff !important;
+  color: #e2e60f;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+
+
     </style>
     <!-- ✅ MathJax untuk render rumus matematika -->
 <script>
@@ -120,6 +175,10 @@
               <a href="#home" class="nav-link">Home</a>
               <a href="#achievement" class="nav-link">Achievement</a>
               <a href="#about" class="nav-link">About me</a>
+              <a href="#assistant" class="nav-link">Assistant</a>
+              <a href="#social" class="nav-link">Social Media</a>
+
+
             </div>
           </div>
         </div>
@@ -191,28 +250,92 @@
     </section>
 
 
-    <!-- ✅ About Section & Chatbot -->
-    <section id="about" class="min-h-screen pb-32 bg-white">
-      <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 items-start gap-16 px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div>
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">About Me</h2>
-         <p class="mt-4 text-gray-700 text-lg leading-relaxed">
-  Ishac Kurnia Sandy, remaja berusia 19 tahun yang lahir di kota Tangerang, 09 Januari 2006. Tengah menjalani pendidikan di Universitas Raharja dan telah memasuki semester ke-2. Mudah bergaul, ceria, dan inovatif, selalu ingin tahu akan hal baru dan punya bakat di bidang musisi di bagian keyboard. Kini tengah mempelajari bagaimana menjadi web developer, backend developer, dan data analyst.
-</p>
+  <!-- ✅ SECTION ABOUT (Hanya isinya "About Me") -->
+<section id="about" class="pt-20 pb-6 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">About Me</h2>
+    <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+    Ishac Kurnia Sandy, remaja berusia 19 tahun yang lahir di kota Tangerang, 09 Januari 2006. Tengah menjalani pendidikan di Universitas Raharja dan telah memasuki semester ke-2. Mudah bergaul, ceria, dan inovatif, selalu ingin tahu akan hal baru dan punya bakat di bidang musisi di bagian keyboard. Kini tengah mempelajari bagaimana menjadi web developer, backend developer, dan data analyst.
+    </p>
+  </div>
+</section>
 
-        </div>
-   <div class="bg-white w-full h-[80vh] max-h-screen p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg flex flex-col">
-         <span class="font-bold text-gray-700">Merry</span>
-       <div class="flex-1 overflow-y-auto space-y-2 mb-4 max-h-full pt-4 pr-2" id="chatBox"></div>
-     <form id="chatForm" class="flex flex-col sm:flex-row gap-2">
- <input type="text" id="messageInput" class="w-full sm:flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base" placeholder="Tulis sesuatu..." required autofocus />
-  <button type="submit" class="bg-blue-500 text-white px-5 py-3 rounded-full hover:bg-blue-600 transition text-base">Kirim</button>
-  <button type="button" id="clearBtn" class="bg-red-500 text-white px-5 py-3 rounded-full hover:bg-red-600 transition text-base">Clear</button>
-</form>
+<!-- ✅ SECTION ASSISTANT (Dipisah dari About) -->
+<section id="assistant" class="py-6">
+  <div class="flex flex-col h-[80vh] bg-white rounded-2xl shadow-lg overflow-hidden">
 
-        </div>
-      </div>
-    </section>
+    <!-- STEP 2: HEADER TANYA MERRY -->
+    <div class="sticky top-0 z-20 bg-white px-4 py-2 border-b border-purple-200">
+      <span class="font-bold text-purple-600">Tanya Merry</span>
+    </div>
+
+    <!-- STEP 3: CHAT BUBBLE -->
+    <div id="chatBox" class="flex-1 overflow-y-auto space-y-2 px-4 pt-4 pb-2">
+      <!-- Bubble akan masuk ke sini via JS -->
+    </div>
+
+    <!-- STEP 4: FORM INPUT -->
+    <form id="chatForm" class="sticky bottom-0 z-20 bg-white px-4 py-3 border-t flex flex-col sm:flex-row gap-2">
+      <input id="userInput" type="text" autocomplete="off" placeholder="Tulis sesuatu..."
+        class="flex-1 px-4 py-2 rounded-full border border-blue-400 focus:outline-none focus:ring focus:ring-blue-300" />
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Kirim</button>
+      <button type="button" id="clearBtn"
+        class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600">Clear</button>
+    </form>
+
+  </div>
+</section>
+
+
+<!-- ✅ Social Media Section -->
+<section id="social" class="bg-white py-12 min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-10">Connect with Me</h2>
+<div class="grid grid-cols-3 sm:grid-cols-6 gap-2 w-max mx-auto">
+
+
+
+
+
+
+
+
+
+      
+      <!-- GitHub -->
+      <a href="https://github.com/Ikyodayo" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-[#7e22ce] text-white text-xl shadow-md hover:scale-110 transition">
+        <i class="fab fa-github"></i>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://facebook.com/ishac.sandy" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-[#7e22ce] text-white text-xl shadow-md hover:scale-110 transition">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/6285691920202" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-[#7e22ce] text-white text-xl shadow-md hover:scale-110 transition">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+      <!-- Discord -->
+      <a href="https://discordapp.com/users/783135454018142238" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-[#7e22ce] text-white text-xl shadow-md hover:scale-110 transition">
+        <i class="fab fa-discord"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/lshackurniaa" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-[#7e22ce] text-white text-xl shadow-md hover:scale-110 transition">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <!-- Gmail -->
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=acorkut@gmail.com" target="_blank" class="w-12 h-12 rounded-full flex items-center justify-center bg-[#7e22ce] text-white text-xl shadow-md hover:scale-110 transition">
+        <i class="fab fa-google"></i>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- ✅ Music -->
    <audio id="bgMusic" src="music/Lauv - Steal The Show.mp3" preload="auto" loop></audio>
@@ -221,12 +344,16 @@
         🎤<span>Let's Play Music</span>
       </button>
     </div>
-    <div id="musicBtnWrapper" class="fixed bottom-28 right-4 z-50 transition-all duration-500 opacity-0 translate-x-20 sm:bottom-80 sm:right-6">
+    <div id="musicBtnWrapper" class="fixed bottom-40 right-4 z-50 transition-all duration-500 opacity-0 translate-x-20 sm:bottom-80 sm:right-6">
       <button id="toggleMusic" class="w-12 h-12 rounded-full bg-purple-600 text-white shadow-lg flex items-center justify-center hover:bg-purple-700 transition">
         <div class="relative w-5 h-5">
-          <svg id="iconPlay" class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-100" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M6 4l10 6-10 6V4z" />
-          </svg>
+         <svg id="iconPlay" class="absolute inset-0 w-full h-full transition-opacity duration-300" fill="currentColor" viewBox="0 0 20 20">
+  <path d="M6 4l10 6-10 6V4z" />
+</svg>
+<svg id="iconPause" class="absolute inset-0 w-full h-full transition-opacity duration-300 hidden" fill="currentColor" viewBox="0 0 20 20">
+  <path d="M6 4h4v12H6V4zm4 0h4v12h-4V4z" />
+</svg>
+
           <svg id="iconPause" class="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0" fill="currentColor" viewBox="0 0 20 20">
             <path d="M6 4h4v12H6V4zm4 0h4v12h-4V4z" />
           </svg>
@@ -271,7 +398,7 @@ if (logo) {
       let current = "";
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) current = section.id;
+        if (rect.top <= 150 && rect.bottom >= 50) current = section.id;
       });
       navLinks.forEach(link => {
         link.classList.toggle("active", link.getAttribute("href").substring(1) === current);
@@ -322,10 +449,14 @@ if (logo) {
     // Chatbot
     const chatBox = document.getElementById("chatBox");
     const chatForm = document.getElementById("chatForm");
-    const messageInput = document.getElementById("messageInput");
+    const messageInput = document.getElementById("userInput");
     const clearBtn = document.getElementById("clearBtn");
 
-    clearBtn.addEventListener("click", () => chatBox.innerHTML = '');
+   clearBtn.addEventListener("click", () => {
+  chatBox.innerHTML = '';
+  chatHistory = [];
+});
+
 
     function addLoading() {
       removeLoading();
@@ -342,6 +473,7 @@ if (logo) {
       if (existing) existing.remove();
     }
 
+    let chatHistory = [];
     chatForm.addEventListener("submit", async e => {
       e.preventDefault();
       const message = messageInput.value.trim();
@@ -350,23 +482,45 @@ if (logo) {
       addMessage('You', message, 'text-right text-blue-700');
       messageInput.value = '';
       addLoading();
-      let timeoutFallback = setTimeout(() => {
+let timeoutFallback = setTimeout(() => {
   removeLoading();
-  addMessage('Merry', 'Ini agak lama ya... mungkin koneksi sedang lambat.', 'text-left text-yellow-600');
-}, 7000); 
+  addMessage('Merry', 'Ini agak lama ya... mungkin koneksi sedang lambat .', 'text-left typing-bubble', 'slowNotice');
+}, 7000);
 
       try {
-        const res = await fetch(`https://zenz.biz.id/ai/blackbox?query=${encodeURIComponent(message)}`);
-        const data = await res.json();
+    chatHistory.push({ role: "user", content: message });
 
-        removeLoading();
-        clearTimeout(timeoutFallback);
-       if (res.ok && data.status && data.result && data.result.response) {
-  addMessage('Merry', data.result.response, 'text-left text-gray-800');
-} else {
-  const msg = data?.error || "Maaf, Merry sedang kesulitan merespons. Coba lagi nanti ya 😊";
-  addMessage("Merry", msg, 'text-left text-red-500');
+// Batasi agar hanya ambil 10 pesan terakhir (biar URL-nya nggak terlalu panjang)
+if (chatHistory.length > 10) {
+  chatHistory = chatHistory.slice(-10);
 }
+
+// Gabungkan riwayat jadi satu prompt
+const contextPrompt = chatHistory.map(msg => {
+  return `${msg.role === "user" ? "You" : "Merry"}: ${msg.content}`;
+}).join("\n");
+
+// Kirim sebagai query
+const res = await fetch(`https://zenz.biz.id/ai/blackbox?query=${encodeURIComponent(contextPrompt)}`);
+const data = await res.json();
+
+// Hapus loading, timeout, dll.
+removeLoading();
+clearTimeout(timeoutFallback);
+
+if (res.ok && data.status && data.result && data.result.response) {
+  const reply = data.result.response;
+  const old = document.getElementById('slowNotice');
+if (old) old.remove();
+
+  addMessage("Merry",reply);
+
+  // Tambahkan balasan Merry ke history
+  chatHistory.push({ role: "assistant", content: reply });
+} else {
+  addMessage("Merry", "Merry gagal menjawab. Coba lagi nanti ya!", "text-left text-red-500");
+}
+
 } catch (err) {
   console.error("Terjadi kesalahan jaringan:", err);
   removeLoading();
@@ -376,54 +530,72 @@ if (logo) {
 
     });
 
- function addMessage(sender, text, className = '') {
+function addMessage(sender, text, className = '', optionalId = '') {
+  const isBot = sender === 'Merry';
+
+  const wrapper = document.createElement('div');
+  wrapper.className = `w-full flex ${isBot ? 'justify-start' : 'justify-end'} mb-2`;
+
   const msg = document.createElement('div');
+  if (optionalId) msg.id = optionalId;
+  msg.className = `${isBot ? 'bot-bubble' : 'user-bubble'} animate-fade-in relative cursor-pointer`;
 
-  let bubbleClass = sender === 'Merry' ? 'bot-bubble' : 'user-bubble';
-  msg.className = `relative p-3 rounded-lg border border-gray-200 shadow ${bubbleClass} ${className} group animate-fade-in`;
-
-
-  if (sender === 'Merry') {
+  if (isBot) {
     msg.innerHTML = `
       <strong class="text-purple-600">${sender}:</strong>
       <div class="mt-1">${marked.parse(text)}</div>
-    <button class="copy-btn absolute top-2 right-4 text-purple-600 font-semibold text-sm whitespace-nowrap min-w-[60px]" onclick="event.stopPropagation(); copyToClipboard(this)">Salin</button>
-
-
+      <button class="copy-btn absolute top-2 right-4 text-purple-600 font-semibold text-sm">Salin</button>
     `;
 
-   msg.addEventListener("click", () => {
-  const contentDiv = msg.querySelector("div.mt-1");
-  const button = msg.querySelector(".copy-btn");
-  if (!contentDiv) return;
-  const textToCopy = contentDiv.innerText.trim();
+    const contentDiv = msg.querySelector("div.mt-1");
+    const copyBtn = msg.querySelector(".copy-btn");
 
-  // Tambahkan efek warna ungu ke bubble selama 1 detik
-  msg.classList.add("bg-purple-200");
-  setTimeout(() => {
-    msg.classList.remove("bg-purple-200");
-  }, 1000);
+    // ✅ Klik seluruh bubble (termasuk salin tombol jika diperlukan)
+    msg.addEventListener("click", (e) => {
+      const clickedBtn = e.target.closest(".copy-btn");
+      const textToCopy = contentDiv?.innerText?.trim();
+      if (!textToCopy) return;
 
-  // Salin teks ke clipboard
-  navigator.clipboard.writeText(textToCopy).then(() => {
-    if (button) button.innerText = "Disalin!";
-    setTimeout(() => {
-      if (button) button.innerText = "Salin";
-    }, 1000);
-  }).catch(() => alert("Gagal menyalin teks"));
-});
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        // 🔁 Warna kedip
+        msg.style.backgroundColor = "#f3e8ff"; 
+        setTimeout(() => {
+          msg.style.backgroundColor = "";
+        }, 1000);
+
+        // ✅ Ubah tombol "Salin" → "Disalin!"
+        if (copyBtn) {
+          copyBtn.innerText = "Disalin!";
+          setTimeout(() => {
+            copyBtn.innerText = "Salin";
+          }, 1000);
+        }
+      });
+
+      // Hindari bubble menjalankan salin dobel kalau tombol dipencet
+      if (clickedBtn) e.stopPropagation();
+    });
 
   } else {
-    msg.innerHTML = `<strong class="text-blue-600">${sender}:</strong> <div class="mt-1">${marked.parse(text)}</div>`;
+    msg.innerHTML = `
+      <strong class="text-blue-600">${sender}:</strong>
+      <div class="mt-1">${marked.parse(text)}</div>
+    `;
   }
 
-  chatBox.appendChild(msg);
+  wrapper.appendChild(msg);
+  chatBox.appendChild(wrapper);
   chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+
   if (window.MathJax && MathJax.typesetPromise) {
-  MathJax.typesetPromise([msg]);
+    MathJax.typesetPromise([msg]);
+  }
 }
 
+ function cleanMerryPrefix(text) {
+  return text.replace(/^Merry:\s*/i, "").trim();
 }
+
 
 
 
@@ -437,8 +609,9 @@ if (logo) {
     introBtn.addEventListener("click", async () => {
   try {
     await bgMusic.play(); // Memastikan audio dimulai
-    iconPlay.classList.add("opacity-0");
-    iconPause.classList.remove("opacity-0");
+   iconPlay.classList.add("hidden");
+iconPause.classList.remove("hidden");
+
 
     // Tampilkan tombol pause
     musicBtnWrapper.classList.remove("opacity-0", "translate-x-20");
@@ -457,17 +630,15 @@ if (logo) {
   bgMusic.muted = false;
   const status = document.getElementById("musicStatus");
 
-  if (bgMusic.paused) {
-    bgMusic.play();
-    iconPlay.classList.add("opacity-0");
-    iconPause.classList.remove("opacity-0");
-    
-  } else {
-    bgMusic.pause();
-    iconPause.classList.add("opacity-0");
-    iconPlay.classList.remove("opacity-0");
-    
-  }
+ if (bgMusic.paused) {
+  bgMusic.play();
+  iconPlay.classList.add("hidden");
+  iconPause.classList.remove("hidden");
+} else {
+  bgMusic.pause();
+  iconPause.classList.add("hidden");
+  iconPlay.classList.remove("hidden");
+}
 
 
   setTimeout(() => {
@@ -506,6 +677,61 @@ window.addEventListener('load', () => {
 
 
 </script>
+<button id="scrollTopBtn" class="fixed bottom-24 right-4 z-40 w-12 h-12 rounded-full bg-purple-700 text-white shadow-lg flex items-center justify-center z-50 hidden">
+  <svg id="scrollTopIcon" class="w-8 h-8 transition-transform duration-500" viewBox="0 0 20 20" fill="currentColor">
+    <path d="M10 6l-5 5h10l-5-5z" />
+  </svg>
+</button>
+
+
+
+
+
+<script>
+ const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let show = false;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && (entry.target.id === "assistant" || entry.target.id === "social")) {
+          show = true;
+        }
+      });
+
+      if (show) {
+        scrollTopBtn.classList.remove("hidden");
+      } else {
+        scrollTopBtn.classList.add("hidden");
+      }
+    },
+    {
+      threshold: 0.6, // Bagian harus terlihat minimal 60%
+    }
+  );
+
+  const assistant = document.getElementById("assistant");
+  const social = document.getElementById("social");
+  observer.observe(assistant);
+  observer.observe(social);
+
+  // Efek klik + scroll halus + animasi ikon
+  scrollTopBtn.addEventListener("click", () => {
+    const icon = document.getElementById("scrollTopIcon");
+    icon.classList.add("animate-spin");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      icon.classList.remove("animate-spin");
+    }, 1000);
+  });
+
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+
+</script>
+
 
   </body>
 </html>
